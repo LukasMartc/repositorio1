@@ -11,3 +11,12 @@ def buscar_persona(rut):
 
 def obtener_personas():
     return personas
+
+def delete_persona(rut):
+    persona = buscar_persona(rut)
+    if persona is None:
+        return False
+    else:
+        personas.remove(persona)
+        return True
+    

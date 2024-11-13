@@ -1,5 +1,5 @@
 from clases.persona import Persona
-from controlador.controlador_persona import add_persona, buscar_persona, obtener_personas
+from controlador.controlador_persona import add_persona, buscar_persona, obtener_personas, delete_persona
 
 def leerNumero():
   while True:
@@ -55,6 +55,24 @@ def editar_persona():
   else:
     print('No se realizaron cambios.')
 
+def eliminar_persona():
+  rut = input('Ingrese el Rut: ')
+  persona = buscar_persona(rut)
+  if persona is None:
+    print('Persona no existe')
+  else:
+    resp = input(f'Esta seguro que quiere eliminar a {persona.getNombre()} S/N: ').upper()
+    if resp == 'S':
+      if delete_persona(rut):  
+        print('Persona eliminada')
+      else:
+        print('Persona no eliminada')
+    else:
+      print('Persona no eliminada')
+
+def imprimir_una_persona():
+  rut = input('Ingrese el Rut: ')
+
 def imprimir_todos():
   personas = obtener_personas()
   for persona in personas:
@@ -68,5 +86,9 @@ def main():
       agregar_persona()
     elif op == 2:
       editar_persona()
+    elif op == 3:
+      eliminar_persona()
+    elif op == 4:
+      imprimir_una_persona()
     elif op == 5:
       imprimir_todos()
