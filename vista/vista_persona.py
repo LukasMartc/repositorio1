@@ -72,7 +72,12 @@ def eliminar_persona():
 
 def imprimir_una_persona():
   rut = input('Ingrese el Rut: ')
-
+  persona = buscar_persona(rut)
+  if persona is None:
+    print('Persona no existe')
+  else:
+    print(persona)
+  
 def imprimir_todos():
   personas = obtener_personas()
   for persona in personas:
